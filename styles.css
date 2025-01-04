@@ -21,7 +21,12 @@ body {
 }
 
 .square {
-  width: 20px;
-  height: 20px;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
   border: solid 2px black;
+}
+
+.square-colored {
+  background-color: grey;
 }

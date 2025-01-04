@@ -23,5 +23,13 @@ for (let i = 0; i < 16; i++) {
   }
 
   container.appendChild(row);
-} 
+}
+
+const squares = document.querySelectorAll('.square');
+
+squares.forEach((square) => {
+  square.addEventListener('mouseover', () => {
+    square.classList.add('square-colored');
+  })
+})
 
