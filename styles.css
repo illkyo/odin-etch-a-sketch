@@ -1,7 +1,27 @@
-.header-red {
+/* .header-red {
   color: red;
 }
 
 .header-blue {
   color: blue;
+} */
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  border: solid 3px black;
+  margin-top: 220px;
+}
+
+.row {
+  display: flex;
+}
+
+.square {
+  width: 20px;
+  height: 20px;
+  border: solid 2px black;
 }
