@@ -11,6 +11,13 @@
 // })
 const grid = document.querySelector('.grid');
 
+function opacityIncrease(rgbaString) {
+  let newRgbaString = rgbaString.slice(0, -4);
+  let alphaValue = Number(rgbaString.slice(-4).slice(0, 3));
+  alphaValue += 0.1;
+  return newRgbaString + alphaValue.toString() + ')';
+}
+
 function makeGrid(numOfSquares) {
 
   for (let i = 0; i < numOfSquares; i++) {
@@ -21,8 +28,18 @@ function makeGrid(numOfSquares) {
       const square = document.createElement('div');
       square.classList.add('square');
 
-      square.addEventListener('mouseover', () => {
-        square.classList.add('square-colored');
+      square.addEventListener('mouseover', (event) => {
+        if (event.target.style.background && event.target.style.background.includes('rgba')) {
+          event.target.style.background = opacityIncrease(event.target.style.background);
+          console.log(event.target.style.background);
+        } else {
+          function random(number) {
+            return Math.floor(Math.random() * (number+1));
+          }
+  
+          const rndCol = `rgb(${random(255)} ${random(255)} ${random(255)} / 10%)`;
+          event.target.style.background = rndCol;
+        }
       })
   
       row.appendChild(square);
