@@ -9,27 +9,36 @@
 //     h1.classList.add('header-red');
 //   }
 // })
-const container = document.querySelector('.container');
+const grid = document.querySelector('.grid');
 
-for (let i = 0; i < 16; i++) {
-  const row = document.createElement('div');
-  row.classList.add('row');
+function makeGrid(numOfSquares) {
 
-  for (let j = 0; j < 16; j++){
-    const square = document.createElement('div');
-    square.classList.add('square');
+  for (let i = 0; i < numOfSquares; i++) {
+    const row = document.createElement('div');
+    row.classList.add('row');
+  
+    for (let j = 0; j < numOfSquares; j++){
+      const square = document.createElement('div');
+      square.classList.add('square');
 
-    row.appendChild(square);
+      square.addEventListener('mouseover', () => {
+        square.classList.add('square-colored');
+      })
+  
+      row.appendChild(square);
+    }
+  
+    grid.appendChild(row);
   }
 
-  container.appendChild(row);
 }
 
-const squares = document.querySelectorAll('.square');
+makeGrid(16);
 
-squares.forEach((square) => {
-  square.addEventListener('mouseover', () => {
-    square.classList.add('square-colored');
-  })
-})
+function changeGrid() {
+  let numOfSquares = prompt("How many squares do you want the grid to have?", "16");
+  grid.textContent = '';
 
+  makeGrid(numOfSquares);
+
+}
