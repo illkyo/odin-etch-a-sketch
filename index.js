@@ -36,7 +36,17 @@ function makeGrid(numOfSquares) {
 makeGrid(16);
 
 function changeGrid() {
-  let numOfSquares = prompt("How many squares do you want the grid to have?", "16");
+  let numOfSquares;
+
+  while (!numOfSquares || numOfSquares > 100) {
+    numOfSquares = prompt("How many squares do you want the grid to have?", "16");
+    if (numOfSquares > 100) {
+      alert('Number of squares must be below 100 to fit the screen');
+    } else if (!numOfSquares) {
+      numOfSquares = "16";
+    }
+  }
+
   grid.textContent = '';
 
   makeGrid(numOfSquares);
